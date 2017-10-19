@@ -16,11 +16,10 @@ else{
 /*
  * procesar
  */
-
-if (isset($_GET)) {
+if(isset($_GET['tablero'])){
     $f=$_GET['fclick'];
     $c=$_GET['cclick'];
-    $tablero[$f][$c] = $parejas[$f][$c];
+    $tablero[$f][$c] = 3;
 }
 
 $_SESSION['tablero']=$tablero;
