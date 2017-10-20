@@ -3,19 +3,33 @@ session_start();
 include "funcionesJuego.php";
 $tablero=dameTablero();
 $parejas=dameParejas();
+$f;$c;
+
+$comprobacion=array( array(3,2),
+    array(1,1),
+    array(3,2),
+);
+
+$lista = array();
 
 
-/*
- * procesar
- */
-if (isset($_GET['fclick'])){
-    $f=$_GET['fclick'];
-    $c=$_GET['cclick'];
-    $tablero[$f][$c]=$parejas[$f][$c];
-    if ($f && $c == $parejas[0][0]){
-        print "<h2>hola</h2>";
+if (isset($_GET['fclick'])) {
+        $f = $_GET['fclick'];
+        $c = $_GET['cclick'];
+
+    for ($z = 0; $z < 6; $z++) {
+        if ($f == 0 && $c == 0) $lista[0] = 1;     // if($lista[0] == $lista[4])
+        if ($f == 0 && $c == 1) $lista[1] = 2;     // echo "you have paired two cards";
+        if ($f == 1 && $c == 0) $lista[2] = 3;
+        if ($f == 1 && $c == 1) $lista[3] = 3;
+        if ($f == 2 && $c == 0) $lista[4] = 1;
+        if ($f == 2 && $c == 1) $lista[5] = 2;
+        echo $lista[$z];
     }
-}
+        $tablero[$f][$c] = $parejas[$f][$c];
+
+    }
+
 $_SESSION['tablero']=$tablero;
 
 
@@ -36,4 +50,4 @@ echo "</table>";
 
 
 ?>
-<a href="destruirsesion.php">iniciar</a>
+<a href="destruirsesion.php">INICIAR</a>

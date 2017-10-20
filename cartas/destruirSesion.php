@@ -3,4 +3,4 @@ session_start();
 session_destroy();
 ?>
 SESION DESTRUIDA
-<a href="prueba.php">volver</a>
+<a href="prueba.php">VOLVER</a>
