@@ -1,35 +1,29 @@
 <?php
 session_start();
-if (isset($_SESSION['tablero'])){
-    $tablero=$_SESSION['tablero'];
-}
-else{
-    $tablero=array( array(0,0),
-                    array(0,0),
-                    array(0,0)
-    );
-    $parejas=array( array(1,2),
-                    array(3,1),
-                    array(3,2)
-    );
-}
+include "funcionesJuego.php";
+$tablero=dameTablero();
+$parejas=dameParejas();
+
+
 /*
  * procesar
  */
-if(isset($_GET['fclick']) && isset($_GET['cclick'])){
+if (isset($_GET['fclick'])){
     $f=$_GET['fclick'];
     $c=$_GET['cclick'];
-    $tablero[$f][$c] = 3;
+    $tablero[$f][$c]=$parejas[$f][$c];
+    if ($f && $c == $parejas[0][0]){
+        print "<h2>hola</h2>";
+    }
 }
-
 $_SESSION['tablero']=$tablero;
 
 
 
 echo "<table border=2>";
-for ($f=0;$f<count($tablero);$f++){
+for ($f=0;$f<3;$f++){
     echo "<tr>";
-    for ($c=0;$c<count($tablero[$f]);$c++){
+    for ($c=0;$c<2;$c++){
         $nombre="carta".$tablero[$f][$c].".png";
         echo "<td>";
         echo "<a href=prueba.php?fclick=$f&cclick=$c>";
@@ -42,3 +36,4 @@ echo "</table>";
 
 
 ?>
+<a href="destruirsesion.php">iniciar</a>
