@@ -8,9 +8,9 @@ if (isset($_GET['btnInsertCoin'])) {
     $n3 = "";
 }
 else {
-    $n1 = rand(15, 27);
-    $n2 = rand(15, 27);
-    $n3 = rand(15, 27);
+    $n1 = rand(15,27);
+    $n2 = rand(15,27);
+    $n3 = rand(15,27);
 
 }
 
@@ -27,21 +27,47 @@ if (isset($_SESSION['monedas'])){ // Si existe la session de la variable monedas
     if (isset($_GET['btnInsertCoin'])){
         $contadorMonedas++;
     }else if(isset($_GET['btnPlay']) && $contadorMonedas>0){
-        if ($n1==26 || $n2==26 || $n3==26){
-            $contadorMonedas++;
-        }
-        if ($n1==26 && $n2==26 || $n2==26 && $n3=26 || $n1==26 && $n3==26 ){
-            $contadorMonedas += 2;
-        }
+        $contadorMonedas--; // Le quitamos una moneda de la acción de jugar en sí.
 
         if ($n1==26 && $n2==26 && $n3==26){
-            $contadorMonedas += 3;
+            $contadorMonedas += 10;
         }
+
+        else if ($n1==26 && $n2 ==26 || $n2==26 && $n3=26 || $n1==26 && $n3==26 ){
+            $contadorMonedas += 4;
+        }
+
+        else if ($n1==26 || $n2==26 || $n3==26){
+            $contadorMonedas++;
+        }
+
+
+        if ($n1 != 26 && $n2 !=26 && $n3 != 26) { // Si ninguna de las tres frutas son cerezas...
+            if ($n1 == $n2 && $n2 == $n3) {     //... y hay tres frutas iguales...
+                $contadorMonedas += 5;
+
+            }
+        }
+
+         if ($n1 != 26 && $n2 != 26 && $n3 != 26) { // Si ninguna de las 3 frutas son cerezas...
+            if ($n1 == $n2 || $n2 == $n3 || $n1 == $n3) {   //... y dos de ellas son iguales...
+                $contadorMonedas += 2;      // ... GANAMOS 2
+            }
+        }
+
+
+//        else if ($n1 == 26 || $n2 == 26 || $n3 == 26) { // Con que haya una de las 3 frutas que no sean la cereza entramos.
+//            if ($n1 == $n2 || $n2 == $n3 || $n1 == $n3) { // ESTE CASO SE SOLAPA CON EL CASO NUMERO A y CON EL CASO NUMERO C del documento
+//                $contadorMonedas += 3;
+//            }
+//        }
+
+
+
 
 
 
         echo "AÚN PUEDES JUGAR";
-        $contadorMonedas--;
 
     }
     else if ($contadorMonedas==0){
