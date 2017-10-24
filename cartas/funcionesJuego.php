@@ -1,5 +1,7 @@
 <?php
 
+
+
 function dameTablero(){
     if (isset($_SESSION['tablero'])){
         $tablero=$_SESSION['tablero'];
@@ -12,6 +14,8 @@ function dameTablero(){
     }
     return $tablero;
 }
+
+
 function dameParejas(){
     $parejas=array( array(3,2),
                     array(1,1),

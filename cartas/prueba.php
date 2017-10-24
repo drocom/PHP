@@ -4,6 +4,10 @@ include "funcionesJuego.php";
 $tablero=dameTablero();
 $parejas=dameParejas();
 $f;$c;
+$contadorCarta1 = 0;
+$contadorCarta2 = 0;
+$contadorCarta3 = 0;
+$contadorCarta5 = 0;
 
 $comprobacion=array( array(3,2),
     array(1,1),
@@ -17,18 +21,23 @@ if (isset($_GET['fclick'])) {
         $f = $_GET['fclick'];
         $c = $_GET['cclick'];
 
-    for ($z = 0; $z < 6; $z++) {
-        if ($f == 0 && $c == 0) $lista[0] = 1;     // if($lista[0] == $lista[4])
-        if ($f == 0 && $c == 1) $lista[1] = 2;     // echo "you have paired two cards";
-        if ($f == 1 && $c == 0) $lista[2] = 3;
-        if ($f == 1 && $c == 1) $lista[3] = 3;
-        if ($f == 2 && $c == 0) $lista[4] = 1;
-        if ($f == 2 && $c == 1) $lista[5] = 2;
-        echo $lista[$z];
-    }
-        $tablero[$f][$c] = $parejas[$f][$c];
+//    for ($z = 0; $z < 6; $z++) {
+//        if ($f == 0 && $c == 0) $lista[0] = 1;                       // if($lista[0] == $lista[4])
+//        if ($f == 0 && $c == 1) $lista[1] = 2;                       // echo "you have paired two cards";
+//        if ($f == 1 && $c == 0) $lista[2] = 3;
+//        if ($f == 1 && $c == 1) $lista[3] = 3;
+//        if ($f == 2 && $c == 0) $lista[4] = 1;
+//        if ($f == 2 && $c == 1) $lista[5] = 2;
+//        echo $lista[$z];
+//    }
 
-    }
+            $tablero[$f][$c] = $parejas[$f][$c];
+
+        }
+
+
+
+
 
 $_SESSION['tablero']=$tablero;
 
