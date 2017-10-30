@@ -1,6 +1,10 @@
 <?php
 
 
+function comprobar(){
+
+}
+
 
 function dameTablero(){
     if (isset($_SESSION['tablero'])){
@@ -24,8 +28,6 @@ function dameParejas(){
     return $parejas;
 
     $_SESSION['tablero']=$tablero;
-
-
 
 
 

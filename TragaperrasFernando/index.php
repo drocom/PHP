@@ -1,8 +1,13 @@
 <?php
 session_start();
 include "MaquinaTragaperras.php";
-if (isset($_SESSION['maquina'])){
-    $maquina= unserialize($_SESSION['maquina']);
+if (isset($_SESSION['maquina'])){ // SI EXISTE LA VARIABLE DE SESION MAQUINA
+    $maquina= unserialize($_SESSION['maquina']); // Recuperamos la maquina si existe!
+
+    if (isset($_GET['btnRecargar'])){
+        $maquina->reset();
+    }
+
     if(isset($_GET['btnIntroducir'])){
         $maquina->aniadirMonedas();
     }
@@ -14,26 +19,35 @@ if (isset($_SESSION['maquina'])){
         }
     }
     if (isset($_GET['btnJugar'])){
-        $maquina->jugar();
+        if ($maquina->getMonedas()>0) {
+            $maquina->jugar();
+            $maquina->comprobar();
+        }
     }
 }else{
     $maquina=new MaquinaTragaperras();
 }
 /*GUARDAR DATOS*/
-$_SESSION['maquina']= serialize($maquina);
+$_SESSION['maquina'] = serialize($maquina); // Convertir objeto en cadena
 
 ?>
 
 ESTA ES UNA GRAN MAQUINA DE APUESTAS.....
 <BR>
+<div class="global">
+<br>
 <?=$maquina->getFruta1()?>
 <?=$maquina->getFruta2()?>
 <?=$maquina->getFruta3()?>
+
+</div>
+
+<br><br>
 <FORM action="" method="get">
 
     <input type="submit"
            name="btnRecargar"
-           value="Recargar">
+           value="Reset">
 
     <input type="submit"
            name="btnJugar"
@@ -48,3 +62,6 @@ ESTA ES UNA GRAN MAQUINA DE APUESTAS.....
            value="Apostar">
     <?=$maquina->getApuesta()?>
 </FORM>
+
+
+<br><br><br><a href="destruirsesion.php">INICIAR</a>

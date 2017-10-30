@@ -3,11 +3,7 @@ session_start();
 include "funcionesJuego.php";
 $tablero=dameTablero();
 $parejas=dameParejas();
-$f;$c;
-$contadorCarta1 = 0;
-$contadorCarta2 = 0;
-$contadorCarta3 = 0;
-$contadorCarta5 = 0;
+
 
 $comprobacion=array( array(3,2),
     array(1,1),
@@ -20,6 +16,7 @@ $lista = array();
 if (isset($_GET['fclick'])) {
         $f = $_GET['fclick'];
         $c = $_GET['cclick'];
+
 
 //    for ($z = 0; $z < 6; $z++) {
 //        if ($f == 0 && $c == 0) $lista[0] = 1;                       // if($lista[0] == $lista[4])
@@ -40,7 +37,6 @@ if (isset($_GET['fclick'])) {
 
 
 $_SESSION['tablero']=$tablero;
-
 
 
 echo "<table border=2>";

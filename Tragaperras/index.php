@@ -18,18 +18,22 @@ else if(isset($_GET['btnPlay'])) {
 if (isset($_SESSION['monedas'])){ // Si existe la session de la variable monedas
     $contadorMonedas = $_SESSION['monedas'];
     $contadorMonedasApostadas = $_SESSION['monedasApostadas'];
+    $contadorMonedasPrevias = $_SESSION['monedasPrevias'];
+    $contadorMonedasPrevias = $contadorMonedas;
 
-        if (isset($_GET['btnAumentarApuesta'])){
+    if (isset($_GET['btnAumentarApuesta'])){
             $contadorMonedas--;
             $contadorMonedasApostadas++;
         }
 
         if (isset($_GET['btnInsertCoin'])){
             $contadorMonedas++;
+            $cara = "&#x1F60A";
+
         }
 
         if ($contadorMonedasApostadas == 0){
-            $contadorMonedasApostadas = 1;
+            $contadorMonedasApostadas = 1; // Si las monedas que apostamos son 0 las pasamos a ser 1 para poder operar con ellas.
         }
 
         if(isset($_GET['btnPlay']) && $contadorMonedas>0){
@@ -64,6 +68,7 @@ if (isset($_SESSION['monedas'])){ // Si existe la session de la variable monedas
         }
 
 
+
 //        else if ($n1 == 26 || $n2 == 26 || $n3 == 26) { // Con que haya una de las 3 frutas que no sean la cereza entramos.
 //            if ($n1 == $n2 || $n2 == $n3 || $n1 == $n3) { // ESTE CASO SE SOLAPA CON EL CASO NUMERO A y CON EL CASO NUMERO C del documento
 //                $contadorMonedas += 3;
@@ -71,17 +76,31 @@ if (isset($_SESSION['monedas'])){ // Si existe la session de la variable monedas
 //        }
 
         $contadorMonedasApostadas = 0;
-
     }
+
     else if ($contadorMonedas==0){
         echo "No puedes jugar ya que no tienes monedas suficientes.";
     }
 }
     else $contadorMonedas=50;
 
+
+if ($contadorMonedas>$contadorMonedasPrevias && !isset($_GET['btnInsertCoin'])){
+    $cara = "&#x1F603";
+}
+if ($contadorMonedas<$contadorMonedasPrevias) {
+    $cara = "&#x1F61E";
+}
+if ($contadorMonedas==$contadorMonedasPrevias) {
+    $cara = "&#x1F610";
+}
+
+
+
 /***/
 $_SESSION ['monedas'] = $contadorMonedas; // Leo las sesiones y al final las guardo
 $_SESSION ['monedasApostadas'] = $contadorMonedasApostadas; // Leo las sesiones y al final las guardo
+$_SESSION ['monedasPrevias'] = $contadorMonedasPrevias; // Leo las sesiones y al final las guardo
 
 
 ?>
@@ -99,13 +118,14 @@ $_SESSION ['monedasApostadas'] = $contadorMonedasApostadas; // Leo las sesiones 
         <br><br><input type="submit" name="btnPlay" value="Jugar">
         <br><br><input type="submit" name="btnAumentarApuesta" value="Aumentar apuesta">
     </form>
-    &#1278<?=$n1?>
+    <br><br><br>
+    &ensp;&ensp;&#1278<?=$n1?>
     &#1278<?=$n2?>
     &#1278<?=$n3?>
-
+    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<?=$cara?>
 
 </body>
 </html>
 
 
-<br><br><a href="destruirsesion.php">INICIAR</a>
+<br><br><br><a href="destruirsesion.php">INICIAR</a>
