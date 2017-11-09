@@ -2,14 +2,11 @@
 
 include "funciones.php";
 
-
 session_start();
-
 
 $numeroHabitaciones = $_GET['ingresarHabitaciones'];
 if ($numeroHabitaciones >= 1 && $numeroHabitaciones <= 9 && isset($_GET['enviar'])) {
     echo "HAY HABITACIONES DISPONIBLES PARA REALIZAR LA COMPROBACION<br><br><br>";
-    echo '<a href="index2.php">Click para PASAR A LA SEGUNDA PAGINA</a>';
     mostrarHabitaciones();
 } else
     echo "<br>COMPROBAR SI HAY HABITACIONES DISPONIBLES EN EL HOTEL:";
@@ -28,7 +25,7 @@ $_SESSION ['habitaciones'] = $numeroHabitaciones; // Leo las sesiones y al final
     <title>Title</title>
 </head>
 <body>
-<form action="index.php" method="get">
+<form action="index2.php" method="get">
     <br><label>Nº habitaciones hotel que quiere comprobar: </label>
     <br><br><input type="text" name="ingresarHabitaciones">
     <br><br><input type="submit" name="enviar" value="Enviar">

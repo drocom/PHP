@@ -1,10 +1,10 @@
 <?php
 
-$numero1 = 1;
-$numero2 = 1;
-$numero3 = 1;
+$numero1 = 2;
+$numero2 = 8;
+$numero3 = 14;
 $ruta = "datosEjercicio.txt";
-
+$elArray = array ('2','3');
 
 if (isset($_GET['btnFichero'])){
     escribirNumeros($numero1,$numero2,$numero3);
@@ -47,12 +47,14 @@ function obtenerSuma(){
 
 function obtenerArray($ruta){
     $ficheroPrueba = fopen($ruta, "r");
-    $array = file($ruta);
-    fclose($ficheroPrueba);
-    return $array;
+    while (!feof($ficheroPrueba)) {
+        $linea = fgets($ficheroPrueba);
+        $parts = explode('\n',$linea);
+        foreach ($parts as $value) {
+            echo "$value <br>";
+        }
+    }
 }
-
-
 
 ?>
 
