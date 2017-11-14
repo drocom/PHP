@@ -1,12 +1,15 @@
 <?php
+
 session_start();
 include "index2.php";
     if (isset($_SESSION['habitacionesFinales'])) {
         $numeroHabitaciones = $_SESSION['habitacionesFinales'];
     }
-if (isset($_POST['enviar'])) {
-    $_SESSION['listaNombres'] = $_POST;
-}
+
+    $fichero = fopen("datosReserva.txt", "a+");
+    file_put_contents('datosReserva.txt', serialize($_POST));
+    fclose($fichero);
+
 ?>
 
 

@@ -2,15 +2,9 @@
 session_start();
 include "index3.php";
 
-if (isset($_SESSION['listaNombres']))
-    $lista = $_SESSION ['listaNombres']; // Leo las sesiones y al final las guardo
-    foreach ($lista as $value){
-        echo $value;
-    }
 
-
-
-
-
+    $fichero_texto = fopen ("datosReserva.txt", "r");
+    $contenido = unserialize(file_get_contents("datosReserva.txt"));
+    echo $contenido;
 
 ?>
