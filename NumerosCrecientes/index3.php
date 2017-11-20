@@ -13,8 +13,14 @@ echo '<br><br>';
 
 if ($_GET['numeritos']) {
     foreach ($_GET['numeritos'] as $valor) {
-        echo "Numero: $valor \t";
-        echo "<br>";
+        if($valor > 0) {
+            echo "Numero: $valor \t";
+            echo "<br>";
+        }
+        else{
+            echo "El siguiente valor no es positivo $valor ";
+            echo "<br>";
+        }
     }
 }
 ?>
