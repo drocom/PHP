@@ -6,7 +6,7 @@
     $ingredientes = array();
 
     foreach ($_GET['ingrediente'] as $valor) {
-        $ingredientes[] = $valor; // Lo metemos en un array para ir sacandolo luego
+        $ingredientes[] = $valor; // Lo metemos en un array para ir sacandolo lueego
     }
 
 echo "La " . $receta . " para 1 unico comensal lleva los siguientes ingredientes:   ";

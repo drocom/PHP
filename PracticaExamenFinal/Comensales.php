@@ -11,7 +11,7 @@
     <body>
         <form action="Receta.php" method="get">
             Nombre Receta: <input type="text" name="receta">
-            Nº comensales: <input type="text" name="comensales"> //ccomenes
+            Nº comensales: <input type="text" name="comensales"> //ccomenees
             <br><br>
             <?php for ($i = 0; $i<6 ; $i++){
                 echo '<label>Ingrediente: </label>';
@@ -27,3 +27,4 @@
     </body>
 </html>
 
+d
