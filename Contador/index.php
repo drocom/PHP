@@ -7,11 +7,11 @@ session_start();
 if (isset($_SESSION['monedas'])) { // Si existe la session de la variable monedas
     $contadorMonedas = $_SESSION['monedas'];
 
-    if ($contadorMonedas==1550){
+    if ($contadorMonedas==4){
         print "FIN DE LA CUENTA";
     }
 
-    if (isset($_GET['aumentar']) && $contadorMonedas<1550) {
+    if (isset($_GET['aumentar']) && $contadorMonedas<4) {
         $contadorMonedas++;
     }
 
