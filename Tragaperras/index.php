@@ -119,7 +119,7 @@ $_SESSION ['monedasPrevias'] = $contadorMonedasPrevias; // Leo las sesiones y al
         <br><br><input type="submit" name="btnAumentarApuesta" value="Aumentar apuesta">
     </form>
     <br><br><br>
-    &ensp;&ensp;&#1278<?=$n1?>
+    &#1278<?=$n1?>
     &#1278<?=$n2?>
     &#1278<?=$n3?>
     &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<?=$cara?>
